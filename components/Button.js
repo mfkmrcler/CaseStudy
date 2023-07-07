@@ -10,9 +10,9 @@ const Button = (props) => {
     </TouchableOpacity>);
 };
 
-styles = StyleSheet.create({
+const styles = StyleSheet.create({
     buttonContainer: {
-        backgroundColor: 'green',
+        backgroundColor: '#28AF6E',
         alignItems: 'center',
         borderRadius: 10,
         marginHorizontal: 18,
@@ -22,8 +22,8 @@ styles = StyleSheet.create({
         color: 'white',
         padding: 12,
         fontWeight: 'bold',
+        textAlign: 'center'
     }
 });
-
 
 export default Button;

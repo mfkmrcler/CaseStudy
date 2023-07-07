@@ -6,7 +6,7 @@ const { width } = Dimensions.get('window');
 function Slides({ item }) {
   return (
     <View key={item.id} >
-        <Header title={item.title}/>
+        <Header title={item.title} color="black"/>
         <Image source={item.image} style={{ height: '75%', width, resizeMode: 'contain' }} />
     </View>
   );

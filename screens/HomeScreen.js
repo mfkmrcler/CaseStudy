@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text, SafeAreaView } from "react-native";
+import { StyleSheet, View, SafeAreaView, ScrollView, ActivityIndicator } from "react-native";
 import { getCategories } from "../api/CategoriesService";
 import { getQuestions } from "../api/QuestionsService";
 import { StatusBar } from "expo-status-bar";
 import AppBar from "../components/AppBar";
+import Questions from "../components/Questions";
+import Subtitle from "../components/Subtitle";
+import Categories from "../components/Categories";
 
-function HomeScreen() {
+const HomeScreen = () => {
   const [categories, setCategories] = useState([]);
-  const [qustions, setQuestions] = useState([]);
+  const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
     loadCategories();
@@ -15,34 +18,42 @@ function HomeScreen() {
   }, []);
 
   const loadCategories = async () => {
-    await getCategories().then((categories) => {
-      setCategories(categories);
-      
-    });
+    const categories = await getCategories();
+    setCategories(categories);
   };
+
   const loadQuestions = async () => {
-    await getQuestions().then((qustions) => {
-      setQuestions(qustions);
-      
-    });
+    const questions = await getQuestions();
+    setQuestions(questions);
   };
+
+  console.log(categories["data"]);
 
   return (
-    <SafeAreaView style={{ flex: 1, backgroundColor: 'white' }}>
-        <StatusBar backgroundColor='white' />
-        <View style={styles.container}>
-            <AppBar />
-        </View>
+    <SafeAreaView style={styles.container}>
+      <StatusBar backgroundColor="white" />
+      <ScrollView>
+      <View>
+        <AppBar />
+      </View>
+      <Subtitle subtitle="Get started" color="black" />
+      {questions.length === 0 ? <ActivityIndicator size="small" color="#0000ff" />: <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+        {questions.map((item) => (
+          <Questions key={item.id} item={item} />
+        ))}
+      </ScrollView>}
+      {categories.length === 0 ? <ActivityIndicator size="small" color="#0000ff" />: <ScrollView>{categories["data"].map((item) => <Categories key={item.id} item={item} />)}</ScrollView>}
+      </ScrollView>
     </SafeAreaView>
   );
-}
-
-export default HomeScreen;
+};
 
 const styles = StyleSheet.create({
   container: {
-    flex:1, 
+    flex: 1,
+    backgroundColor: 'white',
     marginTop: 20,
-    justifyContent: 'space-between',
   },
 });
+
+export default HomeScreen;

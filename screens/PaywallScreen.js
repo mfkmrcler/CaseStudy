@@ -7,6 +7,8 @@ import {
   StatusBar,
   Platform,
   ScrollView,
+  TouchableOpacity,
+  Text,
 } from 'react-native';
 const screenHeight = Dimensions.get('window').height;
 const screenWidth = Dimensions.get('window').width;
@@ -46,8 +48,12 @@ const PaywallScreen = ({ navigation }) => {
         resizeMode="stretch"
         style={styles.img}
       >
-        <View style={{flex:2}}></View>
-          <View style={{flex:5}}>
+        <View style={{flex: 2.5, top:30, right:30, justifyContent: 'flex-start', alignItems: 'flex-end' }}>
+        <TouchableOpacity onPress={goHomeScreen} style={styles.closeButton}>
+            <Text style={{color: 'white', fontSize: 20,}}>x</Text>
+          </TouchableOpacity>
+        </View>
+        <View style={{flex:4.5 }}>
           <View>
           <Header title="PlantApp Premium" color="white"/>
           <Subtitle subtitle="Access all features" color="#9FA59F"/>
@@ -70,7 +76,6 @@ const PaywallScreen = ({ navigation }) => {
             <BottomNote bottomNote={bottomNote}/>
             <BottomNote bottomNote="Terms · Privacy · Restore"/>
           </View>
-        
       </ImageBackground>
     </View>
   );
@@ -86,6 +91,14 @@ const styles = StyleSheet.create({
     height: screenHeight,
     width: screenWidth,
     justifyContent: 'center',
+  },
+  closeButton: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 

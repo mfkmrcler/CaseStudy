@@ -19,8 +19,8 @@ const styles = StyleSheet.create({
         padding: 5,
         margin:10,
         borderRadius: 8,
-        height: 140,
-        width: 140,
+        height: 110,
+        width: 120,
         
     },
     imgcontainer:{

@@ -1,8 +1,8 @@
 import React from "react";
-import { View, Text, ImageBackground, StyleSheet } from "react-native";
-
+import { View, Text, ImageBackground, StyleSheet, Dimensions } from "react-native";
+const { width } = Dimensions.get('window');
 const Categories = ({ item }) => {
-    console.log("item", item);
+    
   return (
     <ImageBackground
       source={{ uri: item["image"].url }}
@@ -19,23 +19,20 @@ const Categories = ({ item }) => {
 
 const styles = StyleSheet.create({
   img: {
-    height: 110,
-    width: 160,
-    margin: 7,
-    justifyContent: "center",
-    alignItems: "flex-start",
+    height: 160,
+    width: width * 0.45,
+    margin: 8,
     borderRadius: 10, 
   },
   image: {
-    borderRadius: 10, 
+    borderRadius: 10,
   },
   titleContainer: {
-    marginTop: 50,
-    marginLeft: 4, 
+    margin: 8, 
   },
   title: {
     color: "black",
-    fontSize: 12,
+    fontSize: 18,
     fontWeight: "bold",
   },
 });

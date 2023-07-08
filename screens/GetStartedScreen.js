@@ -22,7 +22,7 @@ const GetStartedScreen = () => {
             <View style={{flex:1, marginTop: 15,justifyContent: 'space-between'}}>
                 <View style={styles.bodyContainer}>
                     <Header title="Welcome to PlantApp"/>
-                    <Subtitle subtitle="Identify more than 3000+ plants and 88% accuracy."/>
+                    <Subtitle subtitle="Identify more than 3000+ plants and 88% accuracy." color="#6C6D6C"/>
                     <Image source={require('../assets/screen2.png')} style={{ height: '65%', width, resizeMode: 'contain' }}/>
                 </View>
                 <View style={styles.bottomContainer}>

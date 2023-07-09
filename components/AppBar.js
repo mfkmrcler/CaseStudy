@@ -32,7 +32,7 @@ const AppBar = () => {
       <Subtitle subtitle="Hi, plant lover!" color="black" />
       <View style={{ flexDirection: 'row' }}>
         <Header title={greeting} color="black" />
-        <Image source={imageSource} style={{ width: 50, height: 50 }} />
+        <Image source={imageSource} style={{ width: 35, height: 35 }} />
       </View>
       <SearchBar />
     </View>
@@ -40,3 +40,4 @@ const AppBar = () => {
 };
 
 export default AppBar;
+

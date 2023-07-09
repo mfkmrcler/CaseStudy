@@ -4,10 +4,10 @@
     "slug": "caseStudy",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/easy.png",
+    "icon": "./assets/easywy.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/easy.png",
+      "image": "./assets/easywy.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },

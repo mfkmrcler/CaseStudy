@@ -9,7 +9,7 @@ import Subtitle from "../components/Subtitle";
 import Categories from "../components/Categories";
 import UpgradePremium from "../components/UpgradePremium";
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
   const [categories, setCategories] = useState([]);
   const [questions, setQuestions] = useState([]);
 
@@ -29,46 +29,52 @@ const HomeScreen = ({navigation}) => {
   };
 
   return (
-    <SafeAreaView style={[styles.container, {backgroundColor: 'white'}]}>
-      <StatusBar backgroundColor="white" />
-      <View>
-        <AppBar />
-      </View>
-      <UpgradePremium onPress={() => navigation.navigate('PaywallScreen')}/>
-      <Subtitle subtitle="Get started" color="black" />
-      <View >
-        {questions.length === 0 ? (
-          <ActivityIndicator size="small" color="#0000ff" />
-        ) : (
-          <FlatList
-            data={questions}
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            renderItem={({ item }) => <Questions key={item.id} item={item} />}
-          />
-        )}
-      </View>
+    <View style={styles.container}>
+      <StatusBar barStyle="dark-content"/>
+      <SafeAreaView style={styles.safeArea}>
+        <View>
+          <AppBar />
+        </View>
+        <UpgradePremium onPress={() => navigation.navigate('PaywallScreen')} />
+        <Subtitle subtitle="Get started" color="black" />
+        <View>
+          {questions.length === 0 ? (
+            <ActivityIndicator size="small" color="#0000ff" />
+          ) : (
+            <FlatList
+              data={questions}
+              horizontal
+              showsHorizontalScrollIndicator={false}
+              renderItem={({ item }) => <Questions key={item.id} item={item} />}
+            />
+          )}
+        </View>
 
-      <View style={{ flex: 1 }}>
-        {categories.length === 0 ? (
-          <ActivityIndicator size="small" color="#0000ff" />
-        ) : (
-          <FlatList
-            data={categories["data"]} 
-            numColumns={2}
-            renderItem={({ item }) => <Categories key={item.id} item={item} />}
-          />
-        )}
-      </View>
-    </SafeAreaView>
+        <View style={{ flex: 1 }}>
+          {categories.length === 0 ? (
+            <ActivityIndicator size="small" color="#0000ff" />
+          ) : (
+            <FlatList
+              data={categories["data"]}
+              numColumns={2}
+              renderItem={({ item }) => <Categories key={item.id} item={item} />}
+            />
+          )}
+        </View>
+      </SafeAreaView>
+    </View>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "white", 
+  },
+  safeArea: {
+    flex: 1,
     marginTop: 20,
-    height: "100%",
+    backgroundColor: "white", 
   },
 });
 

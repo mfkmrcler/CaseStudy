@@ -24,7 +24,7 @@ import BottomNote from '../components/BottomNote';
 const PaywallScreen = ({ navigation }) => {
   const [selectedChoiceIndex, setSelectedChoiceIndex] = useState(1);
   const goHomeScreen = () => {
-    navigation.navigate('HomeScreen');
+    navigation.navigate('MainScreen');
   };
 
   const handleChoiceSelection = (index) => {
